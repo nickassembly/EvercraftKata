@@ -2,7 +2,8 @@
 
 namespace EvercraftKata.Core
 {
-   public class Class1
+   public class Character
    {
+      public string Name { get; set; }
    }
 }
