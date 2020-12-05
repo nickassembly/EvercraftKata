@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30711.63
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EvercraftKata.Core", "EvercraftKata.Core\EvercraftKata.Core.csproj", "{06990BDD-CAB0-4AF6-A53C-9830C827BBAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{06990BDD-CAB0-4AF6-A53C-9830C827BBAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06990BDD-CAB0-4AF6-A53C-9830C827BBAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06990BDD-CAB0-4AF6-A53C-9830C827BBAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06990BDD-CAB0-4AF6-A53C-9830C827BBAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1B995D4C-DD8F-4064-845D-855B295B9273}
+	EndGlobalSection
+EndGlobal
