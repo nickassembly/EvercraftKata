@@ -14,5 +14,18 @@ namespace EvercraftKata.Tests
 
          character.Name.Should().Be("Name");
       }
+
+      [Fact]
+      public void GetAndSetName()
+      {
+         var name = "Artemis";
+         var character = new Character();
+
+         character.Name = name;
+
+         character.Name.Should().Be(name);
+      }
+
+
    }
 }
