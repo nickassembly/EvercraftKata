@@ -1,9 +1,9 @@
 ﻿namespace EvercraftKata.Core
 {
-   public enum Alignments
+   public enum Alignments : byte
    {
-      Evil = -1,
-      Neutral = 0, 
-      Good = 1
+      Evil = 1,
+      Neutral = 2,
+      Good = 3
    }
 }

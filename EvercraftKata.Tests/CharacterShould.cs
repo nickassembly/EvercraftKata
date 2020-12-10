@@ -8,35 +8,26 @@ namespace EvercraftKata.Tests
    public class CharacterShould
    {
       [Fact]
-      public void HaveDefaultNameAtCreation()
+      public void HaveDefaultValuesAtCreation()
       {
          var character = new Character();
 
          character.Name.Should().Be("Name");
+         character.Alignment.Should().Be(Alignments.Neutral);
       }
 
       [Theory]
-      [InlineData("Artemis")]
-      [InlineData("Harry")]
-      public void GetAndSetName(string name)
+      [InlineData("Artemis", Alignments.Good)]
+      [InlineData("Harry", Alignments.Neutral)]
+      [InlineData("Horrible", Alignments.Evil)]
+      public void GetAndSetNameAndAlignment(string name, Alignments alignment)
       {
          var character = new Character();
 
          character.Name = name;
-
-         character.Name.Should().Be(name);
-      }
-
-      [Theory]
-      [InlineData(Alignments.Evil)]
-      [InlineData(Alignments.Neutral)]
-      [InlineData(Alignments.Good)]
-      public void GetAndSetAlignment(Alignments alignment)
-      {
-         var character = new Character();
-
          character.Alignment = alignment;
 
+         character.Name.Should().Be(name);
          character.Alignment.Should().Be(alignment);
       }
 

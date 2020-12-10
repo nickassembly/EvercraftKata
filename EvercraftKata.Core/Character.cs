@@ -6,7 +6,7 @@ namespace EvercraftKata.Core
    {
       public string Name { get; set; } = "Name";
 
-      public Alignments Alignment { get; set; }
+      public Alignments Alignment { get; set; } = Alignments.Neutral;
 
    }
 }
