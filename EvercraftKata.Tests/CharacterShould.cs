@@ -35,10 +35,17 @@ namespace EvercraftKata.Tests
          _character.Alignment.Should().Be(alignment);
       }
 
-      [Fact]
-      public void AttackTargetCharacters()
+      [Theory]
+      [InlineData(8, false)]
+      [InlineData(9, false)]
+      [InlineData(10, true)]
+      [InlineData(11, true)]
+      public void AttackTargetCharacters(int roll, bool expected)
       {
+         var target = new Character();
+         bool result = _character.Attack(target, roll);
 
+         result.Should().Be(expected);
       }
 
 

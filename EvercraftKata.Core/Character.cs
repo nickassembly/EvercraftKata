@@ -12,7 +12,10 @@ namespace EvercraftKata.Core
 
       public int HitPoints { get; private set; } = 5;
 
-      public void Attack(Character target) => throw new NotImplementedException();
+      public bool Attack(Character target, int roll)
+      {
+         return roll >= target.ArmorClass;
+      }
 
    }
 }
