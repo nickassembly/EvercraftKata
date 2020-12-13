@@ -14,7 +14,14 @@ namespace EvercraftKata.Core
 
       public bool Attack(Character target, int roll)
       {
-         return roll >= target.ArmorClass;
+         bool isHit =  roll >= target.ArmorClass;
+
+         if (isHit)
+         {
+            target.HitPoints--;
+         }
+
+         return isHit;
       }
 
    }

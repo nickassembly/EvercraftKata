@@ -48,6 +48,25 @@ namespace EvercraftKata.Tests
          result.Should().Be(expected);
       }
 
+      [Theory]
+      [InlineData(8, false)]
+      [InlineData(9, false)]
+      [InlineData(10, true)]
+      [InlineData(11, true)]
+      public void DamageTargetOnAttackHit(int roll, bool isHit)
+      {
+         var target = new Character();
+
+         target.HitPoints.Should().Be(5);
+
+         bool result = _character.Attack(target, roll);
+
+         result.Should().Be(isHit);
+         var expectedHitPoints = isHit ? 4 : 5;
+         target.HitPoints.Should().Be(expectedHitPoints);
+      }
+
+
 
    }
 }
