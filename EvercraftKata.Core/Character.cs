@@ -19,6 +19,10 @@ namespace EvercraftKata.Core
          if (isHit)
          {
             target.HitPoints--;
+            if(roll == 20)
+            {
+               target.HitPoints--;
+            }
          }
 
          return isHit;
