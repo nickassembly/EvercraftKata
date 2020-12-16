@@ -21,6 +21,13 @@ namespace EvercraftKata.Tests
          _character.Alignment.Should().Be(Alignments.Neutral);
          _character.ArmorClass.Should().Be(10);
          _character.HitPoints.Should().Be(5);
+
+         _character.Strength.Should().Be(10);
+         _character.Dexterity.Should().Be(10);
+         _character.Constitution.Should().Be(10);
+         _character.Wisdom.Should().Be(10);
+         _character.Intelligence.Should().Be(10);
+         _character.Charisma.Should().Be(10);
       }
 
       [Theory]
