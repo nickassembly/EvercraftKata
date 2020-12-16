@@ -65,6 +65,21 @@ namespace EvercraftKata.Tests
          target.HitPoints.Should().Be(expectedHitPoints);
       }
 
+      [Fact]
+      public void BeDeadIfHitPointsAreZero()
+      {
+         var target = new Character();
+         target.HitPoints.Should().Be(5);
+         _character.Attack(target, 19);
+         _character.Attack(target, 19);
+         _character.Attack(target, 19);
+         _character.Attack(target, 19);
+         target.IsDead.Should().BeFalse();
+         _character.Attack(target, 19);
+
+         target.HitPoints.Should().Be(0);
+         target.IsDead.Should().BeTrue();
+      }
 
 
 

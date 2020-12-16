@@ -11,6 +11,7 @@ namespace EvercraftKata.Core
       public int ArmorClass => 10;
 
       public int HitPoints { get; private set; } = 5;
+      public bool IsDead => HitPoints < 1;
 
       public bool Attack(Character target, int roll)
       {
