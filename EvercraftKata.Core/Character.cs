@@ -22,7 +22,7 @@ namespace EvercraftKata.Core
 
       public bool Attack(Character target, int roll)
       {
-         bool isHit =  roll >= target.ArmorClass;
+         bool isHit =  roll + Strength.Modifier >= target.ArmorClass;
 
          if (isHit)
          {

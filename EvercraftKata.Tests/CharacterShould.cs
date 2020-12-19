@@ -22,12 +22,12 @@ namespace EvercraftKata.Tests
          _character.ArmorClass.Should().Be(10);
          _character.HitPoints.Should().Be(5);
 
-         _character.Strength.Should().Be(10);
-         _character.Dexterity.Should().Be(10);
-         _character.Constitution.Should().Be(10);
-         _character.Wisdom.Should().Be(10);
-         _character.Intelligence.Should().Be(10);
-         _character.Charisma.Should().Be(10);
+         _character.Strength.Value.Should().Be(10);
+         _character.Dexterity.Value.Should().Be(10);
+         _character.Constitution.Value.Should().Be(10);
+         _character.Wisdom.Value.Should().Be(10);
+         _character.Intelligence.Value.Should().Be(10);
+         _character.Charisma.Value.Should().Be(10);
       }
 
       [Theory]
