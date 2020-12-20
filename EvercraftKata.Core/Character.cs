@@ -26,10 +26,11 @@ namespace EvercraftKata.Core
 
          if (isHit)
          {
-            target.HitPoints--;
+            int damage = Math.Max(1, 1 + Strength.Modifier);
+            target.HitPoints -= damage;
             if(roll == 20)
             {
-               target.HitPoints--;
+               target.HitPoints -= 1; // + Strength.Modifier;
             }
          }
 
