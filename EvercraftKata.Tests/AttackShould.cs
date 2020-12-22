@@ -57,20 +57,20 @@ namespace EvercraftKata.Tests
       [InlineData(1, 4)]
       [InlineData(2, 4)]
       [InlineData(9, 4)]
-      [InlineData(20, -1)]
-      [InlineData(18, 0)]
-      [InlineData(12, 3)]
-      public void AdjustAttackDamageByStrengthModifier(int strength, int expectedHitPoints)
+      [InlineData(20, -7)]
+      [InlineData(18, -5)]
+      [InlineData(15, -1)]
+      [InlineData(12, 1)]
+      public void DoubleDamageForCriticalHits(int strength, int expectedHitPoints)
       {
          _character.Strength = strength;
          var target = new Character();
          target.HitPoints.Should().Be(5);
 
-         _character.Attack(target, 19);
+         _character.Attack(target, 20);
 
          target.HitPoints.Should().Be(expectedHitPoints);
       }
-
 
    }
 }

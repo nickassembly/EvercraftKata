@@ -88,6 +88,42 @@ namespace EvercraftKata.Tests
          target.IsDead.Should().BeTrue();
       }
 
+      [Theory]
+      [InlineData(1, 5)]
+      [InlineData(8, 9)]
+      [InlineData(9, 9)]
+      [InlineData(10, 10)]
+      [InlineData(11, 10)]
+      [InlineData(12, 11)]
+      [InlineData(14, 12)]
+      [InlineData(17, 13)]
+      public void AdjustArmorClassByDexterityModifier(int dexterity, int expected)
+      {
+         _character.Dexterity = dexterity;
+
+         _character.ArmorClass.Should().Be(expected);
+      }
+
+      [Theory]
+      [InlineData(1, 1)]
+      [InlineData(2, 1)]
+      [InlineData(9, 4)]
+      [InlineData(10, 5)]
+      [InlineData(11, 5)]
+      [InlineData(12, 6)]
+      [InlineData(14, 7)]
+      [InlineData(20, 10)]
+      public void AdjustHitPointsByConstitutionModifier(int constitution, int expected)
+      {
+         var character = new Character(constitution: constitution);
+   
+
+         character.HitPoints.Should().Be(expected);
+      }
+
+
+
+
 
 
 
