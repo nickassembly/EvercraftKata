@@ -5,11 +5,8 @@ namespace EvercraftKata.Core
    public class Character
    {
       public string Name { get; set; }
-
       public Alignments Alignment { get; set; }
-
       public int ArmorClass => 10 + Dexterity.Modifier;
-
       public int HitPoints { get; private set; } 
       public bool IsDead => HitPoints < 1;
 
@@ -35,6 +32,7 @@ namespace EvercraftKata.Core
          HitPoints = Math.Max(1, 5 + Constitution.Modifier);
       }
 
+     // Pull into its own method
       public bool Attack(Character target, int roll)
       {
          bool isHit = roll + Strength.Modifier >= target.ArmorClass;
