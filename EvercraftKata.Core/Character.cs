@@ -32,10 +32,9 @@ namespace EvercraftKata.Core
          HitPoints = Math.Max(1, 5 + Constitution.Modifier);
       }
 
-     // Pull into its own method
       public bool Attack(Character target, int roll)
       {
-         bool isHit = roll + Strength.Modifier >= target.ArmorClass;
+         bool isHit = target.IsHitBy(roll + Strength.Modifier);
 
          if (isHit)
          {
@@ -50,5 +49,6 @@ namespace EvercraftKata.Core
          return isHit;
       }
 
+      public bool IsHitBy(int modifiedRoll) => modifiedRoll >= ArmorClass;
    }
 }
