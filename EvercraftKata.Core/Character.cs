@@ -43,12 +43,14 @@ namespace EvercraftKata.Core
             {
                damage *= 2;
             }
-            target.HitPoints -= Math.Max(1, damage);
+            target.InflictDamage(Math.Max(1, damage));
          }
 
          return isHit;
       }
 
       public bool IsHitBy(int modifiedRoll) => modifiedRoll >= ArmorClass;
+
+      public void InflictDamage(int damageTotal) => HitPoints -= damageTotal;
    }
 }
