@@ -4,11 +4,15 @@ namespace EvercraftKata.Core
 {
    public class Character
    {
+      private const int ExperienceGainedPerHit = 10;
+      private const int MinimumDamage = 1;
+
       public string Name { get; set; }
       public Alignments Alignment { get; set; }
       public int ArmorClass => 10 + Dexterity.Modifier;
       public int HitPoints { get; private set; } 
       public bool IsDead => HitPoints < 1;
+      public int ExperiencePoints { get; set; }
 
       public Attribute Strength { get; set; }
       public Attribute Dexterity { get; set; }
@@ -38,16 +42,20 @@ namespace EvercraftKata.Core
 
          if (isHit)
          {
-            int damage = 1 + Strength.Modifier;
-            if (roll == 20)
+            const int baseDamage = 1;
+            int damage = baseDamage + Strength.Modifier;
+            if (RollIsCrit(roll))
             {
                damage *= 2;
             }
-            target.InflictDamage(Math.Max(1, damage));
+            target.InflictDamage(Math.Max(MinimumDamage, damage));
+            ExperiencePoints += ExperienceGainedPerHit;
          }
 
          return isHit;
       }
+
+      private static bool RollIsCrit(int roll) => roll == 20;
 
       public bool IsHitBy(int modifiedRoll) => modifiedRoll >= ArmorClass;
 
