@@ -72,5 +72,20 @@ namespace EvercraftKata.Tests
          target.HitPoints.Should().Be(expectedHitPoints);
       }
 
+      [Theory]
+      [InlineData(0, 10)]
+      [InlineData(10, 20)]
+      [InlineData(15, 25)]
+      public void IncreaseAttackerExperienceOnHit(int startExp, int expected)
+      {
+         _character.ExperiencePoints = startExp;
+
+         _character.Attack(new Character(), 18).Should().BeTrue();
+
+         _character.ExperiencePoints.Should().Be(expected);
+      }
+
+
+
    }
 }

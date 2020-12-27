@@ -22,6 +22,9 @@ namespace EvercraftKata.Tests
          _character.ArmorClass.Should().Be(10);
          _character.HitPoints.Should().Be(5);
 
+         _character.ExperiencePoints.Should().Be(0);
+         _character.Level.Should().Be(1);
+
          _character.Strength.Value.Should().Be(10);
          _character.Dexterity.Value.Should().Be(10);
          _character.Constitution.Value.Should().Be(10);
@@ -121,10 +124,14 @@ namespace EvercraftKata.Tests
          character.HitPoints.Should().Be(expected);
       }
 
+      [Theory]
+      [InlineData(0, 1)]
+      [InlineData(1000, 2)]
+      [InlineData(2000, 3)]
+      public void HaveLevelBasedOnExperiencePoints(int exp, int expectedLevel)
+      {
 
-
-
-
+      }
 
 
    }

@@ -13,6 +13,7 @@ namespace EvercraftKata.Core
       public int HitPoints { get; private set; } 
       public bool IsDead => HitPoints < 1;
       public int ExperiencePoints { get; set; }
+      public int Level { get; set; } = 1;
 
       public Attribute Strength { get; set; }
       public Attribute Dexterity { get; set; }
