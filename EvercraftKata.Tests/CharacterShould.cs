@@ -126,11 +126,16 @@ namespace EvercraftKata.Tests
 
       [Theory]
       [InlineData(0, 1)]
+      [InlineData(999, 1)]
       [InlineData(1000, 2)]
+      [InlineData(1999, 2)]
       [InlineData(2000, 3)]
+      [InlineData(4500, 5)]
       public void HaveLevelBasedOnExperiencePoints(int exp, int expectedLevel)
       {
+         _character.ExperiencePoints = exp;
 
+         _character.Level.Should().Be(expectedLevel);
       }
 
 
