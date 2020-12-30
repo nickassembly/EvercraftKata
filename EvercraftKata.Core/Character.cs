@@ -6,14 +6,16 @@ namespace EvercraftKata.Core
    {
       private const int ExperienceGainedPerHit = 10;
       private const int MinimumDamage = 1;
+      private const int ExperiencePerLevel = 1000;
 
       public string Name { get; set; }
       public Alignments Alignment { get; set; }
       public int ArmorClass => 10 + Dexterity.Modifier;
-      public int HitPoints { get; private set; } 
+      public int HitPoints => Math.Max(1, 5 + Constitution.Modifier);
+      public int Damage { get; private set; }
       public bool IsDead => HitPoints < 1;
       public int ExperiencePoints { get; set; }
-      public int Level => 1 + ExperiencePoints / 1000;
+      public int Level => 1 + ExperiencePoints / ExperiencePerLevel;
 
       public Attribute Strength { get; set; }
       public Attribute Dexterity { get; set; }
@@ -33,8 +35,6 @@ namespace EvercraftKata.Core
          Wisdom = wisdom;
          Intelligence = intelligence;
          Charisma = charisma;
-
-         HitPoints = Math.Max(1, 5 + Constitution.Modifier);
       }
 
       public bool Attack(Character target, int roll)
@@ -60,6 +60,6 @@ namespace EvercraftKata.Core
 
       public bool IsHitBy(int modifiedRoll) => modifiedRoll >= ArmorClass;
 
-      public void InflictDamage(int damageTotal) => HitPoints -= damageTotal;
+      public void InflictDamage(int damageTotal) => Damage += damageTotal;
    }
 }

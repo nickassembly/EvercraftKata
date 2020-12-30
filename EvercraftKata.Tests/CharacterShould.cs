@@ -87,7 +87,7 @@ namespace EvercraftKata.Tests
          target.IsDead.Should().BeFalse();
          _character.Attack(target, 19);
 
-         target.HitPoints.Should().Be(0);
+         target.Damage.Should().Be(target.HitPoints);
          target.IsDead.Should().BeTrue();
       }
 
