@@ -59,12 +59,12 @@ namespace EvercraftKata.Tests
       }
 
       [Theory]
-      [InlineData(8, false, 5)]
-      [InlineData(9, false, 5)]
-      [InlineData(10, true, 4)]
-      [InlineData(11, true, 4)]
-      [InlineData(20, true, 3)]
-      public void DamageTargetOnAttackHit(int roll, bool isHit, int expectedHitPoints)
+      [InlineData(8, false, 0)]
+      [InlineData(9, false, 0)]
+      [InlineData(10, true, 1)]
+      [InlineData(11, true, 1)]
+      [InlineData(20, true, 2)]
+      public void DamageTargetOnAttackHit(int roll, bool isHit, int expectedDamage)
       {
          var target = new Character();
          target.HitPoints.Should().Be(5);
@@ -72,7 +72,7 @@ namespace EvercraftKata.Tests
          bool result = _character.Attack(target, roll);
 
          result.Should().Be(isHit);
-         target.HitPoints.Should().Be(expectedHitPoints);
+         target.Damage.Should().Be(expectedDamage);
       }
 
       [Fact]

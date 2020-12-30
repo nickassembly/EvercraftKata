@@ -36,40 +36,40 @@ namespace EvercraftKata.Tests
       }
 
       [Theory]
-      [InlineData(1, 4)]
-      [InlineData(2, 4)]
-      [InlineData(9, 4)]
-      [InlineData(20, -1)]
-      [InlineData(18, 0)]
-      [InlineData(12, 3)]
-      public void AdjustAttackDamageByStrengthModifier(int strength, int expectedHitPoints)
+      [InlineData(1, 1)]
+      [InlineData(2, 1)]
+      [InlineData(9, 1)]
+      [InlineData(20, 6)]
+      [InlineData(18, 5)]
+      [InlineData(12, 2)]
+      public void AdjustAttackDamageByStrengthModifier(int strength, int expectedDamage)
       {
          _character.Strength = strength;
          var target = new Character();
-         target.HitPoints.Should().Be(5);
+         target.Damage.Should().Be(0);
 
         _character.Attack(target, 19);
 
-         target.HitPoints.Should().Be(expectedHitPoints);
+         target.Damage.Should().Be(expectedDamage);
       }
 
       [Theory]
-      [InlineData(1, 4)]
-      [InlineData(2, 4)]
-      [InlineData(9, 4)]
-      [InlineData(20, -7)]
-      [InlineData(18, -5)]
-      [InlineData(15, -1)]
-      [InlineData(12, 1)]
-      public void DoubleDamageForCriticalHits(int strength, int expectedHitPoints)
+      [InlineData(1, 1)]
+      [InlineData(2, 1)]
+      [InlineData(9, 1)]
+      [InlineData(20, 12)]
+      [InlineData(18, 10)]
+      [InlineData(15, 6)]
+      [InlineData(12, 4)]
+      public void DoubleDamageForCriticalHits(int strength, int expectedDamage)
       {
          _character.Strength = strength;
          var target = new Character();
-         target.HitPoints.Should().Be(5);
+         target.Damage.Should().Be(0);
 
          _character.Attack(target, 20);
 
-         target.HitPoints.Should().Be(expectedHitPoints);
+         target.Damage.Should().Be(expectedDamage);
       }
 
       [Theory]

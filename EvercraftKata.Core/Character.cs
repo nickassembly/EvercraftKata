@@ -13,7 +13,7 @@ namespace EvercraftKata.Core
       public int ArmorClass => 10 + Dexterity.Modifier;
       public int HitPoints => Math.Max(1, 5 + Constitution.Modifier);
       public int Damage { get; private set; }
-      public bool IsDead => HitPoints < 1;
+      public bool IsDead => Damage >= HitPoints;
       public int ExperiencePoints { get; set; }
       public int Level => 1 + ExperiencePoints / ExperiencePerLevel;
 
