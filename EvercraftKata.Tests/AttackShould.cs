@@ -86,6 +86,5 @@ namespace EvercraftKata.Tests
       }
 
 
-
    }
 }

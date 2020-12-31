@@ -6,16 +6,18 @@ namespace EvercraftKata.Core
    {
       private const int ExperienceGainedPerHit = 10;
       private const int MinimumDamage = 1;
-      private const int ExperiencePerLevel = 1000;
+      public const int ExperiencePerLevel = 1000;
 
       public string Name { get; set; }
       public Alignments Alignment { get; set; }
       public int ArmorClass => 10 + Dexterity.Modifier;
-      public int HitPoints => Math.Max(1, 5 + Constitution.Modifier);
+      public int HitPoints => Level * Math.Max(1, 5 + Constitution.Modifier);
       public int Damage { get; private set; }
       public bool IsDead => Damage >= HitPoints;
       public int ExperiencePoints { get; set; }
       public int Level => 1 + ExperiencePoints / ExperiencePerLevel;
+
+      public int AttackRollModifier => Strength.Modifier;
 
       public Attribute Strength { get; set; }
       public Attribute Dexterity { get; set; }
@@ -39,7 +41,7 @@ namespace EvercraftKata.Core
 
       public bool Attack(Character target, int roll)
       {
-         bool isHit = target.IsHitBy(roll + Strength.Modifier);
+         bool isHit = target.IsHitBy(roll + AttackRollModifier);
 
          if (isHit)
          {

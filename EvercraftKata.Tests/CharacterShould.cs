@@ -138,6 +138,37 @@ namespace EvercraftKata.Tests
          _character.Level.Should().Be(expectedLevel);
       }
 
+      [Theory]
+      [InlineData(1, 10, 5)]
+      [InlineData(2, 10, 10)]
+      [InlineData(2, 14, 14)]
+      [InlineData(3, 14, 21)]
+      public void HaveHitPointsBasedOnLevel(int level, int constitution, int expected)
+      {
+          SetLevel(_character, level);
+         _character.Constitution = constitution;
+
+         _character.HitPoints.Should().Be(expected);
+      }
+
+      [Theory]
+      [InlineData(1, 0)]
+      [InlineData(2, 1)]
+      [InlineData(3, 1)]
+      [InlineData(4, 2)]
+      [InlineData(6, 3)]
+      [InlineData(7, 3)]
+      public void IncreaseAttackModifierEveryTwoLevels(int level, int expectedModifier)
+      {
+         SetLevel(_character, level);
+
+         _character.AttackRollModifier.Should().Be(expectedModifier);
+      }
+
+      private void SetLevel(Character character, int level)
+      {
+         character.ExperiencePoints = (level - 1) * Character.ExperiencePerLevel;
+      }
 
    }
 }
