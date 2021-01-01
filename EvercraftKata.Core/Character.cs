@@ -7,6 +7,7 @@ namespace EvercraftKata.Core
       private const int ExperienceGainedPerHit = 10;
       private const int MinimumDamage = 1;
       public const int ExperiencePerLevel = 1000;
+      private const int LevelsPerAttackIncrease = 2;
 
       public string Name { get; set; }
       public Alignments Alignment { get; set; }
@@ -17,7 +18,7 @@ namespace EvercraftKata.Core
       public int ExperiencePoints { get; set; }
       public int Level => 1 + ExperiencePoints / ExperiencePerLevel;
 
-      public int AttackRollModifier => Strength.Modifier;
+      public int AttackRollModifier => Strength.Modifier + Level / LevelsPerAttackIncrease;
 
       public Attribute Strength { get; set; }
       public Attribute Dexterity { get; set; }

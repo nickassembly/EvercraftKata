@@ -1,4 +1,5 @@
 using EvercraftKata.Core;
+using EvercraftKata.Tests.Extensions;
 using FluentAssertions;
 using System;
 using Xunit;
@@ -145,7 +146,7 @@ namespace EvercraftKata.Tests
       [InlineData(3, 14, 21)]
       public void HaveHitPointsBasedOnLevel(int level, int constitution, int expected)
       {
-          SetLevel(_character, level);
+         _character.SetLevel(level);
          _character.Constitution = constitution;
 
          _character.HitPoints.Should().Be(expected);
@@ -160,14 +161,25 @@ namespace EvercraftKata.Tests
       [InlineData(7, 3)]
       public void IncreaseAttackModifierEveryTwoLevels(int level, int expectedModifier)
       {
-         SetLevel(_character, level);
+         _character.SetLevel(level);
 
          _character.AttackRollModifier.Should().Be(expectedModifier);
       }
 
-      private void SetLevel(Character character, int level)
+      [Theory]
+      [InlineData(1, 1, -5)]
+      [InlineData(1, 2, -4)]
+      [InlineData(1, 20, 5)]
+      [InlineData(1, 12, 1)]
+      [InlineData(4, 1, -3)]
+      [InlineData(4, 2, -2)]
+      [InlineData(4, 20, 7)]
+      [InlineData(4, 12, 3)]
+      public void IncreaseAttackModifierByLevelAndStrengthModifier(int level, int strength, int expected)
       {
-         character.ExperiencePoints = (level - 1) * Character.ExperiencePerLevel;
+         _character.SetLevel(level);
+         _character.Strength = strength;
+         _character.AttackRollModifier.Should().Be(expected);
       }
 
    }

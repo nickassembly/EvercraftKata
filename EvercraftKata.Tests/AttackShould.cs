@@ -1,4 +1,5 @@
 ﻿using EvercraftKata.Core;
+using EvercraftKata.Tests.Extensions;
 using FluentAssertions;
 using System;
 using System.Collections.Generic;
@@ -19,16 +20,20 @@ namespace EvercraftKata.Tests
       }
 
       [Theory]
-      [InlineData(1, 14, false)]
-      [InlineData(1, 15, true)]
-      [InlineData(2, 14, true)]
-      [InlineData(20, 5, true)]
-      [InlineData(20, 4, false)]
-      [InlineData(12, 8, false)]
-      [InlineData(12, 9, true)]
-      public void AdjustAttackRollByStrengthModifier(int strength, int roll, bool expected)
+      [InlineData(1, 1, 14, false)]
+      [InlineData(1, 1, 15, true)]
+      [InlineData(1, 2, 14, true)]
+      [InlineData(1, 20, 5, true)]
+      [InlineData(1, 20, 4, false)]
+      [InlineData(1, 12, 8, false)]
+      [InlineData(1, 12, 9, true)]
+      [InlineData(2, 1, 14, true)]
+      [InlineData(10, 10, 5, true)]
+      public void AdjustAttackRollByAttackModifier(int level, int strength, int roll, bool expected)
       {
-         _character.Strength = strength;
+         _character.SetLevel(level);
+
+        _character.Strength = strength;
 
          bool result = _character.Attack(new Character(), roll);
 
@@ -84,7 +89,6 @@ namespace EvercraftKata.Tests
 
          _character.ExperiencePoints.Should().Be(expected);
       }
-
 
    }
 }
